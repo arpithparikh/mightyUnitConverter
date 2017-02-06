@@ -32,20 +32,20 @@ function tryConvert(value, convert) {
 function TempZones(props) {
   if (props.celsius >= 100) {
     return React.createElement(
-      'p',
-      null,
+      'h5',
+      { className: 'hot' },
       'It\'s getting Hot in here!'
     );
   } else if (props.celsius >= 36.5 && props.celsius <= 37.5) {
     return React.createElement(
-      'p',
-      null,
+      'h5',
+      { className: 'normal' },
       'This is the normal temperature of the human body!'
     );
   } else if (props.celsius <= 0) {
     return React.createElement(
-      'p',
-      null,
+      'h5',
+      { className: 'cold' },
       'Brr...Freezing!'
     );
   }
@@ -72,17 +72,29 @@ var TemperatureInput = function (_React$Component) {
     var value = this.props.value;
     var scale = this.props.scale;
     return React.createElement(
-      'fieldset',
-      null,
+      'div',
+      { className: 'container' },
       React.createElement(
-        'legend',
+        'form',
         null,
-        'Enter temperature in ',
-        scaleNames[scale],
-        ':'
-      ),
-      React.createElement('input', { value: value,
-        onChange: this.handleChange })
+        React.createElement(
+          'div',
+          { className: 'form-group' },
+          React.createElement(
+            'lable',
+            null,
+            React.createElement(
+              'h3',
+              null,
+              'Enter Temperature in ',
+              scaleNames[scale],
+              ': '
+            )
+          ),
+          React.createElement('input', { className: 'form-control container text-center', id: 'focusedInputed', type: 'text', value: value,
+            onChange: this.handleChange })
+        )
+      )
     );
   };
 
@@ -119,7 +131,7 @@ var Calculator = function (_React$Component2) {
 
     return React.createElement(
       'div',
-      null,
+      { className: 'text-center container-fluid' },
       React.createElement(TemperatureInput, {
         scale: 'c',
         value: celsius,

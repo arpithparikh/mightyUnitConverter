@@ -23,13 +23,13 @@ function tryConvert(value, convert) {
 
 function TempZones(props) {
   if (props.celsius >=100) {
-    return <p>It's getting Hot in here!</p>;
+    return <h5 className="hot">It's getting Hot in here!</h5>;
   }
   else if (props.celsius >=36.5 && props.celsius <=37.5) {
-  return <p>This is the normal temperature of the human body!</p>;
+  return <h5 className="normal">This is the normal temperature of the human body!</h5>;
   }
    else if (props.celsius <=0) {
-  return <p>Brr...Freezing!</p>;
+  return <h5 className="cold">Brr...Freezing!</h5>;
   }
   return null;
 }
@@ -48,11 +48,16 @@ class TemperatureInput extends React.Component {
     const value = this.props.value;
     const scale = this.props.scale;
     return (
-      <fieldset>
-        <legend>Enter temperature in {scaleNames[scale]}:</legend>
-        <input value={value}
-               onChange={this.handleChange} />
-      </fieldset>
+      <div className="container">
+          <form>
+            <div className= "form-group">
+              <lable><h3>Enter Temperature in {scaleNames[scale]}: </h3></lable>
+              <input className="form-control container text-center" id="focusedInputed" type="text" value={value}
+                     onChange={this.handleChange} />
+            </div>
+          </form>
+        </div>
+      
     );
   }
 }
@@ -80,7 +85,7 @@ class Calculator extends React.Component {
     const fahrenheit = scale === 'c' ? tryConvert(value, toFahrenheit) : value;
 
     return (
-      <div>
+      <div className="text-center container-fluid">
         <TemperatureInput
           scale="c"
           value={celsius}
