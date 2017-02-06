@@ -36,7 +36,7 @@ function TempZones(props) {
       null,
       'It\'s getting Hot in here!'
     );
-  } else if (props.celsius == 37) {
+  } else if (props.celsius >= 36.5 && props.celsius <= 37.5) {
     return React.createElement(
       'p',
       null,

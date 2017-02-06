@@ -25,7 +25,7 @@ function TempZones(props) {
   if (props.celsius >=100) {
     return <p>It's getting Hot in here!</p>;
   }
-  else if (props.celsius == 37) {
+  else if (props.celsius >=36.5 && props.celsius <=37.5) {
   return <p>This is the normal temperature of the human body!</p>;
   }
    else if (props.celsius <=0) {
